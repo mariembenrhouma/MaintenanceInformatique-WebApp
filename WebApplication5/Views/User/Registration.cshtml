@@ -1,0 +1,289 @@
+﻿@model WebApplication5.Models.eya
+
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>  
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    @*<meta name="keywords"
+        content="Slot Coming Soon Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template" />*@
+    <!-- //Meta tag Keywords -->
+    @*<link href="//fonts.googleapis.com/css2?family=Hind:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">*@
+    <!--/Style-CSS -->
+    <link rel="stylesheet" href="~/Usertemp/css/style.css" type="text/css" media="all" />
+    <!--//Style-CSS -->
+
+    <link rel="stylesheet" href="~/Usertemp/css/font-awesome.min.css" type="text/css" media="all">
+    <style>
+        body {
+            background-image: url('../../Usertemp/images/222.png');
+            background-size: cover;
+            padding: 5px;
+        }
+        .wrapper{
+            max-width:350px;
+            width:100%;
+            height:auto;
+            background:#fff;
+            padding:60px 45px;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            border-radius:20px;
+        }
+        .wrapper .title{
+            margin-bottom:20px;
+            text-align:center;
+            font-size:50px;
+            font-weight: bold;
+            color:#3aaf9f;
+        }
+        .wrapper .form .input-field{
+            position:relative;
+            margin-bottom:30px;
+        }
+        
+        
+    </style>
+
+</head>
+<body>
+    <div id="block" class="w3lvide-content" data-vide-bg="images/slot" data-vide-options="position: 0% 50%">
+        <div class="wrapper">
+            <div class="workinghny-form-grid">
+                <div class="slot-w3l-comingsoon">
+                    <div class="slot-w3content">
+                        @*<h3>Coming Soon!</h3>
+                <h1>Our New website<br />Gestion maintenance informatique</h1>*@
+                        <h3>Our New website:Gestion maintenance informatique</h3>
+
+
+
+                    </div>
+                </div>
+                <!-- /form -->
+                <div class="wrapper">
+                    <div class="title">
+                        @*<div class="main-hotair">
+                <div class="content-wthree">*@
+                        <h2>Registration </h2>
+                    </div>
+                    <form action="#" method="post" class="signin-form">
+                        @*<div class="input-grids">*@
+                        @*<input type="text" name="w3lName" id="w3lName" placeholder="Your Name*" class="contact-input" required="" />*@
+                        <!--EditorFor It creats a HTML(input) element based on the datatype of the specified property of the model-->
+                        <div class="form">
+                            <div class="input-field">
+
+                                @Html.EditorFor(Model => Model.login, new
+                                {
+                                    htmlAttributes = new
+                                    {
+                                        @type = "text",
+                                        @name = "w3lName",
+                                        @id = "w3lName",
+                                        @placeholder = "Login*",
+                                        @class = "contact-input",
+                                        @required = ""
+                                    }
+                                })
+                            </div>
+                            <div class="input-field">
+                                @Html.EditorFor(model => model.password, new
+                           {
+                               htmlAttributes = new
+                               {
+                                   @type = "password",
+                                   @name = "password",
+                                   @id = "password",
+                                   @placeholder = "Your Password * ",
+                                   @class = "contact - input",
+                                   @required = ""
+
+                               }
+                           })
+                            </div>
+                            <div class="input-field">
+                                @Html.EditorFor(Model => Model.password, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @type = "password",
+                                       @name = "cpassword",
+                                       @id = "cpassword",
+                                       @placeholder = "Confirm your password*",
+                                       @class = "contact-input",
+                                       @required = ""
+                                   }
+                               })
+                            </div>
+                            <div class="input-field">
+                                @Html.EditorFor(Model => Model.email, new
+                              {
+                                  htmlAttributes = new
+                                  {
+                                      @type = "type",
+                                      @name = "sword",
+                                      @id = "cpassword",
+                                      @placeholder = "Email*",
+                                      @class = "contact-input",
+                                      @required = ""
+                                  }
+                              })
+                            </div>
+
+                            <table>
+
+                                <tr>
+                                    <td>
+                                        <div class="input-field">
+                                            <select name="departement" id="departement" placeholder="department" required="">
+                                                <option value="">--Please Choose a Department *--</option>
+                                                <option>secretariat</option>
+                                                <option>production</option>
+                                                <option>finance</option>
+                                                <option>Gestion Personnel</option>
+                                            </select>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="input-field">
+                                            <select name="role" id="role" placeholder="Role*" required="">
+                                                <option value="">--Please Choose Role *--</option>
+                                                <option>Client</option>
+                                                <option>Maintenance</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
+                            </table>
+
+
+                            </br>
+                            <button class="btn" type="submit">Registrer</button>
+                        </div>
+                </div>
+
+
+
+                </form>
+                <div class="social-login">
+                    <a href="#facebook">
+
+                        <span class="fa fa-facebook" aria-hidden="true"></span>
+
+
+                    </a>
+                    <a href="#twiter">
+
+                        <span class="fa fa-twitter" aria-hidden="true"></span>
+
+                    </a>
+                    <a href="#google">
+
+                        <span class="fa fa-google-plus" aria-hidden="true"></span>
+
+                    </a>
+
+                    <a href="#insta">
+
+                        <span class="fa fa-pinterest" aria-hidden="true"></span>
+                    </a>
+                </div>
+                @*</div>*@
+
+            </div>
+                <!-- //form -->
+            </div>
+            <!-- copyright-->
+            <!-- //copyright-->
+        </div>
+    </div>
+    <!-- //form section start -->
+    <!-- js -->
+    <script src="js/jquery.min.js"></script>
+    <!-- //js -->
+    <script src="js/jquery.vide.js"></script>
+    <script>
+            //    $(document).ready(function () {
+            //        $("#block").vide("video/ocean"); // Non declarative initialization
+            //
+            //        var instance = $("#block").data("vide"); // Get instance
+            //        var video = instance.getVideoObject(); // Get video object
+            //        instance.destroy(); // Destroy instance
+            //    });
+    </script>
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>reg</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.departement, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.departement, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.departement, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+</body>
+</html>

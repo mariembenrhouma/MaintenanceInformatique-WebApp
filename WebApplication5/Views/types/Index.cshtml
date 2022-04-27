@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication5.Models.type>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Gestion des types d'equipements</h2>
+
+<p>
+    @Html.ActionLink("Ajouter un type d'equipement", "Create")
+</p>
+<table class="table table-bordered"">
+    <tr class="btn-primary">
+        <th>Id</th>
+        <th>
+            @Html.DisplayNameFor(model => model.denomination)
+        </th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model) {
+    <tr >
+        <td>@Html.DisplayFor(modelItem =>item.id_type)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.denomination)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_type }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_type }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_type })
+        </td>
+    </tr>
+}
+
+</table>

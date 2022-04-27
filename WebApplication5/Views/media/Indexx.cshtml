@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Indexx";
+}
+
+<h2>Indexx</h2>
+<center>
+    <h2>efzef
+   </h2>
+    @using (Html.BeginForm("Indexx", "media", FormMethod.Post, new {enctype="multipart/form-data"}))
+            {
+                <div>@Html.TextBox("file","",new { type = "file" })
+                     <input type="submit" value="Save Files"/>
+    @ViewBag.Message
+    </div>
+            }
+</center>

@@ -1,0 +1,43 @@
+﻿@model WebApplication5.Models.type_entretien
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>type_entretien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.libellentr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.libellentr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.action_propose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.action_propose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_typentr }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

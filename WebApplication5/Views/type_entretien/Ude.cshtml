@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Ude";
+
+
+}
+<style>
+    .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .ok {
+        width: 30%;
+    }
+</style>
+@*<h2>Ude</h2>
+    @using (Html.BeginForm("Ude", "type_entretien", FormMethod.Post, new { @class = "form-horizontal" }))
+    {<label class="container">
+         <div class="form-group">
+             <div classs="col-md-10">
+                 <label class="checkbox-inline">
+                     @Html.CheckBox("gyq", false)
+                     <span class="checkmark"></span>
+                     En attente
+                 </label>
+             </div>
+             <div classs="col-md-10">
+                 <label class="checkbox-inline">
+                     @Html.CheckBox("gyp", false)
+                     <span class="checkmark"></span>
+                     Résolu
+                 </label>
+             </div>
+             @ViewBag.Message
+         </div>
+
+     </label>}*@
+
+<script>
+
+    chxGrp.addEventListener('change', message);
+
+    /* The Event Object is passed through, you might've seen it as
+    || "e" or "evt". How it's labelled doesn't matter because Event
+    || Object is always available when you deal with the DOM.
+    */
+    function message(event) {
+
+        // if the node clicked is a checkbox see if it's...
+        if (event.target.type === 'checkbox') {
+
+            // ... checked then...
+            if (event.target.checked) {
+
+      // ...find the node that follows it (i.e. <b>
+                event.target.nextElementSibling.className = "message";
+            } else {
+                /* Otherwise remove any class on it. (there's a more modern
+                || method: classList that can be used instead)
+                */
+                event.target.nextElementSibling.className = "";
+            }
+        }
+        return false;
+    }
+</script>
+<style>
+    b {
+        display: none
+    }
+
+    label {
+        display: table
+    }
+
+    [type=checkbox] {
+        display: table-cell;
+    }
+
+    .message {
+        display: table-cell;
+    }
+</style>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+    </head>
+
+    <body>
+        <!-- Wrapped the checkboxes with a <form> giving us opportunities:
+        HTMLFormControlsCollection API for specialized referencing and
+        Event Delegation allowing us to use a single eventListener for an
+        unlimited amount of event.targets (clicked, changed, inputed,
+        etc. buttons, links, etc.)-->
+        <form id='checkGroup'>
+
+            <p>Display some text when the checkbox is checked: </p>
+
+            <label>
+                Checkbox 1: <input type="checkbox">
+                <b>Checkbox is CHECKED!</b>
+            </label><br>
+
+            <label>
+                Checkbox 2: <input type="checkbox">
+                <b>Second checkbox is checked</b>
+            </label><br>
+
+            <label>
+                Checkbox 3: <input type="checkbox">
+                <b>Third checkbox is checked</b>
+            </label><br>
+
+        </form>
+
+    </body>
+
+</html>

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="demande">
+    <Key>
+      <PropertyRef Name="id_demande" />
+    </Key>
+    <Property Name="id_demande" Type="Int32" Nullable="false" />
+    <Property Name="id_equip" Type="Int32" />
+    <Property Name="id_typentr" Type="Int32" />
+    <Property Name="etat" Type="Int32" />
+    <Property Name="date_dem" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="type_entretien" Relationship="Self.FK_demande_type_entretien" FromRole="demande" ToRole="type_entretien" />
+  </EntityType>
+  <EntityType Name="departement">
+    <Key>
+      <PropertyRef Name="id_dep" />
+    </Key>
+    <Property Name="id_dep" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelledep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="eya" Relationship="Self.FK_departement_eya" FromRole="departement" ToRole="eya" />
+    <NavigationProperty Name="equipement" Relationship="Self.FK_equipement_departement" FromRole="departement" ToRole="equipement" />
+  </EntityType>
+  <EntityType Name="equipement">
+    <Key>
+      <PropertyRef Name="id_equip" />
+    </Key>
+    <Property Name="id_equip" Type="Int32" Nullable="false" />
+    <Property Name="ref" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="libelleq" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="id_dep" Type="Int32" />
+    <Property Name="id_type" Type="Int32" />
+    <Property Name="etat" Type="Int32" />
+    <NavigationProperty Name="departement" Relationship="Self.FK_equipement_departement" FromRole="equipement" ToRole="departement" />
+    <NavigationProperty Name="type" Relationship="Self.FK_equipement_type" FromRole="equipement" ToRole="type" />
+    <NavigationProperty Name="fiche_tech" Relationship="Self.FK_fiche_tech_equipement" FromRole="equipement" ToRole="fiche_tech" />
+    <NavigationProperty Name="intervention" Relationship="Self.FK_intervention_equipement" FromRole="equipement" ToRole="intervention" />
+  </EntityType>
+  <EntityType Name="eya">
+    <Key>
+      <PropertyRef Name="departement" />
+    </Key>
+    <Property Name="departement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" />
+    <NavigationProperty Name="departement1" Relationship="Self.FK_departement_eya" FromRole="eya" ToRole="departement" />
+  </EntityType>
+  <EntityType Name="fiche_tech">
+    <Key>
+      <PropertyRef Name="id_fiche" />
+    </Key>
+    <Property Name="id_fiche" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_equip" Type="Int32" Nullable="false" />
+    <Property Name="fiche" Type="Binary" MaxLength="50" FixedLength="false" />
+    <NavigationProperty Name="equipement" Relationship="Self.FK_fiche_tech_equipement" FromRole="fiche_tech" ToRole="equipement" />
+  </EntityType>
+  <EntityType Name="intervention">
+    <Key>
+      <PropertyRef Name="id_inter" />
+    </Key>
+    <Property Name="id_inter" Type="Int32" Nullable="false" />
+    <Property Name="id_equip" Type="Int32" />
+    <Property Name="id_typenter" Type="Int32" />
+    <Property Name="nb_min" Type="Int32" />
+    <Property Name="typenter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="date_inter" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="equipement" Relationship="Self.FK_intervention_equipement" FromRole="intervention" ToRole="equipement" />
+    <NavigationProperty Name="type_entretien" Relationship="Self.FK_intervention_type_entretien" FromRole="intervention" ToRole="type_entretien" />
+    <NavigationProperty Name="piece" Relationship="Self.FK_piece_intervention" FromRole="intervention" ToRole="piece" />
+  </EntityType>
+  <EntityType Name="piece">
+    <Key>
+      <PropertyRef Name="id_piece" />
+    </Key>
+    <Property Name="id_piece" Type="Int32" Nullable="false" />
+    <Property Name="id_inter" Type="Int32" />
+    <Property Name="libellep" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="valeur" Type="Double" />
+    <NavigationProperty Name="intervention" Relationship="Self.FK_piece_intervention" FromRole="piece" ToRole="intervention" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="type">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="Int32" Nullable="false" />
+    <Property Name="denomination" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="equipement" Relationship="Self.FK_equipement_type" FromRole="type" ToRole="equipement" />
+  </EntityType>
+  <EntityType Name="type_entretien">
+    <Key>
+      <PropertyRef Name="id_typentr" />
+    </Key>
+    <Property Name="id_typentr" Type="Int32" Nullable="false" />
+    <Property Name="libellentr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="action_propose" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="demande" Relationship="Self.FK_demande_type_entretien" FromRole="type_entretien" ToRole="demande" />
+    <NavigationProperty Name="intervention" Relationship="Self.FK_intervention_type_entretien" FromRole="type_entretien" ToRole="intervention" />
+  </EntityType>
+  <Association Name="FK_demande_type_entretien">
+    <End Role="type_entretien" Type="Self.type_entretien" Multiplicity="0..1" />
+    <End Role="demande" Type="Self.demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_entretien">
+        <PropertyRef Name="id_typentr" />
+      </Principal>
+      <Dependent Role="demande">
+        <PropertyRef Name="id_typentr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_departement_eya">
+    <End Role="eya" Type="Self.eya" Multiplicity="0..1" />
+    <End Role="departement" Type="Self.departement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="eya">
+        <PropertyRef Name="departement" />
+      </Principal>
+      <Dependent Role="departement">
+        <PropertyRef Name="libelledep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_equipement_departement">
+    <End Role="departement" Type="Self.departement" Multiplicity="0..1" />
+    <End Role="equipement" Type="Self.equipement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departement">
+        <PropertyRef Name="id_dep" />
+      </Principal>
+      <Dependent Role="equipement">
+        <PropertyRef Name="id_dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_equipement_type">
+    <End Role="type" Type="Self.type" Multiplicity="0..1" />
+    <End Role="equipement" Type="Self.equipement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="equipement">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fiche_tech_equipement">
+    <End Role="equipement" Type="Self.equipement" Multiplicity="1" />
+    <End Role="fiche_tech" Type="Self.fiche_tech" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="equipement">
+        <PropertyRef Name="id_equip" />
+      </Principal>
+      <Dependent Role="fiche_tech">
+        <PropertyRef Name="id_equip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_intervention_equipement">
+    <End Role="equipement" Type="Self.equipement" Multiplicity="0..1" />
+    <End Role="intervention" Type="Self.intervention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="equipement">
+        <PropertyRef Name="id_equip" />
+      </Principal>
+      <Dependent Role="intervention">
+        <PropertyRef Name="id_equip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_intervention_type_entretien">
+    <End Role="type_entretien" Type="Self.type_entretien" Multiplicity="0..1" />
+    <End Role="intervention" Type="Self.intervention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type_entretien">
+        <PropertyRef Name="id_typentr" />
+      </Principal>
+      <Dependent Role="intervention">
+        <PropertyRef Name="id_typenter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_piece_intervention">
+    <End Role="intervention" Type="Self.intervention" Multiplicity="0..1" />
+    <End Role="piece" Type="Self.piece" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="intervention">
+        <PropertyRef Name="id_inter" />
+      </Principal>
+      <Dependent Role="piece">
+        <PropertyRef Name="id_inter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NewdbEntities18" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="demande" EntityType="Self.demande" />
+    <EntitySet Name="departement" EntityType="Self.departement" />
+    <EntitySet Name="equipement" EntityType="Self.equipement" />
+    <EntitySet Name="eya" EntityType="Self.eya" />
+    <EntitySet Name="fiche_tech" EntityType="Self.fiche_tech" />
+    <EntitySet Name="intervention" EntityType="Self.intervention" />
+    <EntitySet Name="piece" EntityType="Self.piece" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="type" EntityType="Self.type" />
+    <EntitySet Name="type_entretien" EntityType="Self.type_entretien" />
+    <AssociationSet Name="FK_demande_type_entretien" Association="Self.FK_demande_type_entretien">
+      <End Role="type_entretien" EntitySet="type_entretien" />
+      <End Role="demande" EntitySet="demande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_departement_eya" Association="Self.FK_departement_eya">
+      <End Role="eya" EntitySet="eya" />
+      <End Role="departement" EntitySet="departement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_equipement_departement" Association="Self.FK_equipement_departement">
+      <End Role="departement" EntitySet="departement" />
+      <End Role="equipement" EntitySet="equipement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_equipement_type" Association="Self.FK_equipement_type">
+      <End Role="type" EntitySet="type" />
+      <End Role="equipement" EntitySet="equipement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fiche_tech_equipement" Association="Self.FK_fiche_tech_equipement">
+      <End Role="equipement" EntitySet="equipement" />
+      <End Role="fiche_tech" EntitySet="fiche_tech" />
+    </AssociationSet>
+    <AssociationSet Name="FK_intervention_equipement" Association="Self.FK_intervention_equipement">
+      <End Role="equipement" EntitySet="equipement" />
+      <End Role="intervention" EntitySet="intervention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_intervention_type_entretien" Association="Self.FK_intervention_type_entretien">
+      <End Role="type_entretien" EntitySet="type_entretien" />
+      <End Role="intervention" EntitySet="intervention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_piece_intervention" Association="Self.FK_piece_intervention">
+      <End Role="intervention" EntitySet="intervention" />
+      <End Role="piece" EntitySet="piece" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

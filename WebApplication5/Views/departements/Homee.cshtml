@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication5.Models.departement>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Gestion des départements</h2>
+<style>
+    .active i{color :#0026ff;}
+</style>
+<p>
+    @Html.ActionLink("Ajouter un département", "Create")
+</p>
+<table class="table table-bordered">
+    <tr class="btn-primary">
+        <th>
+            @Html.DisplayNameFor(model => model.libelledep)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.libelledep)
+        </td>
+        <td>
+           
+
+            <li class="active"><a href="@Url.Action("Edit", "departements", new { id = item.id_dep })"><i class="fas fa-edit fa-2x"></i> </a>
+            <a href="@Url.Action("Details", "departements",new { id = item.id_dep })"><i class="fas fa-info-circle fa-2x "></i></a>
+             <a href="@Url.Action("Delete", "departements", new { id = item.id_dep })"><i class="fas fa-trash-alt fa-2x "></i></a>
+
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.id_dep }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id_dep }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id_dep })*@
+            @*<a href="@Url.Action("Delete", "departements")"><i class="fas fa-trash-alt fa-2x"></i></a>*@
+            </li>
+        </td>
+    </tr>
+}
+
+</table>

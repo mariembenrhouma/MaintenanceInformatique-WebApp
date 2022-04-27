@@ -1,0 +1,195 @@
+﻿@model IEnumerable<WebApplication5.Models.maintdetails>
+
+@{
+    ViewBag.Title = "gestequip";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+
+<link href="~/Content/fontawesome.css" rel="stylesheet" />
+<link href="~/Content/all.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<style type="text/css">
+    .btn {
+        width: 100px;
+        height: 40px;
+        background: #00BCD4;
+        border-style: solid;
+        border-color: white;
+        color: white;
+    }
+
+    .gridborder {
+        border-top: 1px solid #DED8D8;
+    }
+
+    
+    h2 {
+        color: #808080;
+        text-decoration:underline;
+        text-transform:capitalize;
+        
+    }
+    body{
+        background-color:#DED8D8;
+    }
+    
+</style>
+<body>
+    @*<div style="border: 1px solid #DED8D8; width: 500px; font-family: Arial;">
+        @using (@Html.BeginForm(null, null, FormMethod.Post,
+         new { enctype = "multipart/form-data" }))
+        {
+            if (TempData["Message"] != null)
+            {
+
+                <p style="font-family: Arial; font-size: 16px; font-weight: 200; color: red">@TempData["Message"]</p>
+            }
+
+        }*@
+
+
+    
+
+    <center>
+
+        @*@using (Html.BeginForm("gestequip", "mainten", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {*@
+        @*<div>
+                        @Html.TextBox("file", "", new { type = "file" })
+                    <input type="submit" value="Save Files" />
+                    @ViewBag.Message
+                </div>
+            }
+            </center>*@
+        @*<table class="gridborder row-borderhover order-column dataTable no-footer">
+                <tr>
+
+                    <th class="sorting"></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="file" name="files" id="files" multiple="multiple" />
+
+                            <input type="submit" class="btn" name="submit" />
+
+
+                            @Html.ActionLink("Download", "Download", new { fileName = item.File })
+                        </td>
+                    </tr>
+
+                }
+            </table>*@
+        @*</div>*@
+
+
+
+
+
+        <br />
+        <br />
+        <br />
+        <h2>Gestion des équipements</h2>
+
+        @*<p>
+                @Html.ActionLink("Create New", "Create")
+            </p>*@
+        <table class="table table-bordered align-text-new">
+            <tr class="btn-primary">
+                <th class="width:150px;">
+                    @Html.DisplayNameFor(model => model.Numéro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Département)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Référence)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Libellé)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+
+                <th class="text-center fa-align-center">
+                    @Html.DisplayNameFor(model => model.Fiche_technique)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Historique_de_réparation)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Ajout_demande_de_réparation)
+                </th>
+
+            </tr>
+
+            @foreach (var item in ViewBag.Message)
+            {
+                <tr class="text-center ">
+                    <td>
+                        @item.Numéro
+                    </td>
+                    <td>
+                        @item.Département
+                    </td>
+                    <td>
+                        @item.Référence
+                    </td>
+                    <td>
+                        @item.Libellé
+                    </td>
+                    <td>
+                        @item.Type
+                    </td>
+
+                    @*@foreach (var itm in Model)
+                        {*@
+
+                    @using (Html.BeginForm("gestequip", "mainten", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <td class="align-middle">
+                            <div>
+                                @Html.TextBox("file", "", new { type = "file" })
+                                <input type="submit" value="Save Files" />
+                                @ViewBag.Message
+                            </div>
+                        </td>
+                    }
+                    @*<input type="file" name="files" id="files" multiple="multiple" />
+                        <input type="submit" class="btn" name="submit" />
+                        <br />
+
+                        <li class="active"><a href="@Url.Action("Download", "mainten",new { fileName = itm.File })"><i class="fas fa-file-pdf fa-4x"></i></a></li>*@
+                    @*@Html.ActionLink("Download", "mainten", new { fileName = itm.File })*@
+                    @*@item.Fiche_technique*@
+                    <!--</td>
+
+                    }-->
+
+                    <td>
+                        @item.Historique_de_réparation
+                    </td>
+
+                    <td>
+
+                        <a href="@Url.Action("Edit", "mainten")" class="ml-3 align-text"><i class="fas fa-pen-square fa-2x "></i> </a>
+                        <a href="@Url.Action("Delete", "mainten", new { id = item.Numéro })" class="ml-3 align-text"><i class="fas fa-trash fa-2x"></i> </a>
+                        @*@Html.ActionLink("Edit", "Edit", "mainten")*@
+                        @*@Html.ActionLink("Delete", "Delete", "mainten")*@
+
+                    </td>
+                </tr>
+            }
+
+                <tr> 
+                    <td class="text-center "><a href="@Url.Action("Ajout", "mainten")"><i class="fas text-light fa-plus-square fa-2x"></i></a>
+                        
+                    </td>
+                </tr>
+        </center>
+        </table>
+    </body>

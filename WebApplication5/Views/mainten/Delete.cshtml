@@ -1,0 +1,83 @@
+﻿@model WebApplication5.Models.equipement
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>equipement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Numéro
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(equipement => equipement.id_equip)
+        </dd>
+
+    </dl>
+    @*<dl class="dl-horizontal">
+        <dt>
+           Référence
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(class2 => class2.@ref)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Libellé
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.libelleq)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            Type
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.id_type)
+        </dd>
+    </dl>*@
+    @*<dl class="dl-horizontal">
+        <dt>
+            fiche tecnique
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.id_fiche)
+        </dd>
+    </dl>*@
+    @*<dl class="dl-horizontal">
+        <dt>
+            Historique de réparation
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(class2 => claas2.id_typentr)
+        </dd>
+    </dl>*@
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "gestequip")
+        </div>
+    }
+</div>

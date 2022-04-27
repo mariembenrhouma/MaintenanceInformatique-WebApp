@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary btn-sm" data-target="#loginModal" data-toggle="modal">bouton</button>
+            <div class="modal fade" tabindex="-1" id="loginModal"
+                 data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                            <h4 class="modal-title">demande de réparation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+
+                                    <input class="form-control" placeholder="....."
+                                           type="text" id="inputUserName" />
+                                    @*@Html.EditorFor(type_entretien => Model, new
+                                        {
+                                            @type = "text",
+                                                @name = "w3lName",
+                                                @id = "w3lName",
+                                                @placeholder = "panne*",
+                                                @class = "contact-input",
+                                                @required = ""
+                                            }
+                                        })*@
+                                </div>
+                                <div class="form-group">
+
+                                    @*<div class="hi">
+                                        @Html.DropDownList("list", ViewBag.breakdown as SelectList, "please select one") <br />
+                                    </div>*@
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="form-control" placeholder="Autres"
+                                           type="text" id="inputPanne" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Description"
+                                           type="text" id="inputPanne" />
+                                    @*@Html.EditorFor(Model => Model.description, new
+                                        {
+                                            @type = "text",
+                                                @name = "w3lName",
+                                                @id = "w3lName",
+                                                @placeholder = "Description",
+                                                @class = "contact-input",
+                                                @required = ""
+                                            }
+                                        })*@
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" Onclick="alert('la panne est bien enregistrée')">Valider</button>
+                            <button type="button" class="btn btn-primary"
+                                    data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

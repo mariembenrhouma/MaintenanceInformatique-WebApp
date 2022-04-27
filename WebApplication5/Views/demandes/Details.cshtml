@@ -1,0 +1,51 @@
+﻿@model WebApplication5.Models.demande
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>demande</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_equip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_equip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_typentr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_typentr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.etat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.etat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_dem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_dem)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_demande }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

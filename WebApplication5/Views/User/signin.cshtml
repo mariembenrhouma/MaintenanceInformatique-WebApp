@@ -1,0 +1,135 @@
+﻿@model WebApplication5.Models.eya
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Usertemp/css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Usertemp/css/font-awesome.min.css" type="text/css" media="all">
+    <title>signin</title>
+    <style>
+        body {
+            background-image: url('../../Usertemp/images/222.png');
+            background-size: cover;
+            padding: 50px;
+            width: auto;
+            background-position: unset;
+        }
+        .login-box{
+            width:280px;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            color:cornflowerblue;
+        }
+        .textbox{
+            width:100%;
+            overflow:hidden;
+            font-size:10px;
+            padding:3px 0;
+            margin:3px 0;
+            border-bottom:1px solid;
+        }
+        .textbox input{
+            color:#0026ff;
+        }
+    </style>
+</head>
+<body>
+    <script src="js/jquery.min.js"></script>
+    <!-- //js -->
+    <script src="js/jquery.vide.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @*<div class="form-horizontal">*@
+<div class="login-box">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="textbox">
+        @*@Html.LabelFor(model => model.login, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "form-control", @placeholder = "Login" } })
+            @Html.ValidationMessageFor(model => model.login, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    @*<div class="form-group">*@
+    <div class="textbox">
+        @*@Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.password, new
+                  {
+                      htmlAttributes = new
+                      {
+                          @type = "password",
+                          @name = "password",
+                          @id = "password",
+                          @placeholder = "Your Password * ",
+                          @class = "form-control",
+                          @required = ""
+
+                      }
+                  })
+            @*@Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })*@
+            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="textbox">
+        @*@Html.LabelFor(model => model.departement, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.departement, new { htmlAttributes = new { @class = "form-control", @placeholder = "departement" } })
+            @Html.ValidationMessageFor(model => model.departement, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="textbox">
+        @*@Html.LabelFor(model => model.departement, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control", @placeholder = "role" } })
+            @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.role, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    <br />
+    <div class="textbox">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+</div>
+    }
+    <br />
+    @*<div>
+        @Html.ActionLink("signup", "Registration")
+    </div>*@
+</body>
+</html>
